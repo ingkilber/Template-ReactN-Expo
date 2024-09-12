@@ -1,165 +1,169 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, Image, TextInput, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeftIcon } from 'react-native-heroicons/solid';
-import { useNavigation } from '@react-navigation/native';
 import { themeColors } from '../theme';
+import { useNavigation } from '@react-navigation/native';
 
 export default function SignUpScreen() {
   const navigation = useNavigation();
-
   return (
-    <View style={{ flex: 1, backgroundColor: themeColors.bg }}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
+    <View style={[styles.container, { backgroundColor: themeColors.bg }]}>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.backButtonContainer}>
           <TouchableOpacity
             onPress={() => navigation.goBack()}
-            style={{
-              backgroundColor: '#F8E71C',
-              padding: 8,
-              borderTopRightRadius: 20,
-              borderBottomLeftRadius: 20,
-              marginLeft: 16,
-            }}
-          >
+            style={styles.backButton}>
             <ArrowLeftIcon size={20} color="black" />
           </TouchableOpacity>
         </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'center', marginVertical: 16 }}>
-          <Image
-            source={require('../assets/images/signup.png')}
-            style={{ width: 165, height: 110 }}
+        <View style={styles.imageContainer}>
+          <Image 
+            source={require('../assets/images/signup.png')} // Cambia la imagen según sea necesario
+            style={styles.signupImage}
           />
         </View>
       </SafeAreaView>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: 'white',
-          paddingHorizontal: 16,
-          paddingTop: 16,
-          borderTopLeftRadius: 50,
-          borderTopRightRadius: 50,
-        }}
-      >
-        <View style={{ marginTop: 16 }}>
-          <Text style={{ color: '#4A4A4A', marginBottom: 8 }}>Full Name</Text>
-          <TextInput
-            style={{
-              padding: 16,
-              backgroundColor: '#F0F0F0',
-              color: '#4A4A4A',
-              borderRadius: 12,
-              marginBottom: 12,
-            }}
-            value="john snow"
-            placeholder="Enter Name"
-          />
-          <Text style={{ color: '#4A4A4A', marginBottom: 8 }}>Email Address</Text>
-          <TextInput
-            style={{
-              padding: 16,
-              backgroundColor: '#F0F0F0',
-              color: '#4A4A4A',
-              borderRadius: 12,
-              marginBottom: 12,
-            }}
-            value="john@gmail.com"
-            placeholder="Enter Email"
-          />
-          <Text style={{ color: '#4A4A4A', marginBottom: 8 }}>Password</Text>
-          <TextInput
-            style={{
-              padding: 16,
-              backgroundColor: '#F0F0F0',
-              color: '#4A4A4A',
-              borderRadius: 12,
-              marginBottom: 28,
-            }}
-            secureTextEntry
-            value="test12345"
-            placeholder="Enter Password"
-          />
-          <TouchableOpacity
-            style={{
-              paddingVertical: 12,
-              backgroundColor: '#F8E71C',
-              borderRadius: 12,
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 20,
-                fontWeight: 'bold',
-                textAlign: 'center',
-                color: '#4A4A4A',
-              }}
-            >
-              Sign Up
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <Text
-          style={{
-            fontSize: 20,
-            color: '#4A4A4A',
-            fontWeight: 'bold',
-            textAlign: 'center',
-            marginVertical: 16,
-          }}
-        >
-          Or
-        </Text>
-        <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 16 }}>
-          <TouchableOpacity
-            style={{
-              padding: 8,
-              backgroundColor: '#F0F0F0',
-              borderRadius: 12,
-              marginHorizontal: 8,
-            }}
-          >
-            <Image
-              source={require('../assets/icons/google.png')}
-              style={{ width: 40, height: 40 }}
+      
+      <View style={[styles.formContainer, { backgroundColor: 'white' }]}>
+        <ScrollView>
+          <View style={styles.form}>
+            <Text style={styles.label}>Nombre completo</Text>
+            <TextInput 
+              style={styles.input}
+              placeholder="Nombre completo"
             />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              padding: 8,
-              backgroundColor: '#F0F0F0',
-              borderRadius: 12,
-              marginHorizontal: 8,
-            }}
-          >
-            <Image
-              source={require('../assets/icons/apple.png')}
-              style={{ width: 40, height: 40 }}
+            <Text style={styles.label}>Correo electrónico</Text>
+            <TextInput 
+              style={styles.input}
+              placeholder="Ingrese email"
+              keyboardType="email-address"
             />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              padding: 8,
-              backgroundColor: '#F0F0F0',
-              borderRadius: 12,
-              marginHorizontal: 8,
-            }}
-          >
-            <Image
-              source={require('../assets/icons/facebook.png')}
-              style={{ width: 40, height: 40 }}
+            <Text style={styles.label}>Contraseña</Text>
+            <TextInput 
+              style={styles.input}
+              secureTextEntry
+              placeholder="Ingrese Contraseña"
             />
-          </TouchableOpacity>
-        </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 16 }}>
-          <Text style={{ color: '#9B9B9B', fontWeight: '600' }}>
-            Already have an account?
-          </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text style={{ fontWeight: '600', color: '#F8E71C' }}> Login</Text>
-          </TouchableOpacity>
-        </View>
+            <TouchableOpacity style={styles.signupButton}>
+              <Text style={styles.signupButtonText}>Registrarme</Text>
+            </TouchableOpacity>
+          </View>
+          <Text style={styles.orText}>Regístrese con</Text>
+          <View style={styles.socialButtonsContainer}>
+            <TouchableOpacity style={styles.socialButton}>
+              <Image source={require('../assets/icons/google.png')} style={styles.socialIcon} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.socialButton}>
+              <Image source={require('../assets/icons/apple.png')} style={styles.socialIcon} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.socialButton}>
+              <Image source={require('../assets/icons/facebook.png')} style={styles.socialIcon} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.signInContainer}>
+            <Text style={styles.signInText}>¿Ya tienes una cuenta?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+              <Text style={styles.signInLink}> iniciar la sesión</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  safeArea: {
+    flexGrow: 0, // Permite al contenedor crecer sólo cuando hay espacio disponible
+  },
+  backButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginLeft: 16,
+  },
+  backButton: {
+    backgroundColor: '#FBBF24',
+    padding: 8,
+    borderTopRightRadius: 16,
+    borderBottomLeftRadius: 16,
+  },
+  imageContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  signupImage: {
+    width: 200,
+    height: 200,
+  },
+  formContainer: {
+    flex: 1, // Toma el espacio restante disponible
+    paddingHorizontal: 32,
+    paddingTop: 32,
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+  },
+  form: {
+    marginBottom: 4,
+  },
+  label: {
+    color: '#4B5563',
+    marginLeft: 16,
+  },
+  input: {
+    padding: 16,
+    backgroundColor: '#F3F4F6',
+    color: '#4B5563',
+    borderRadius: 16,
+    marginBottom: 12,
+  },
+  signupButton: {
+    paddingVertical: 12,
+    backgroundColor: '#FBBF24',
+    borderRadius: 16,
+  },
+  signupButtonText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#4B5563',
+  },
+  orText: {
+    fontSize: 14,
+    color: '#4B5563',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingVertical: 16,
+  },
+  socialButtonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 20,
+  },
+  socialButton: {
+    padding: 8,
+    backgroundColor: '#F3F4F6',
+    borderRadius: 16,
+    marginHorizontal: 12,
+  },
+  socialIcon: {
+    width: 25,
+    height: 25,
+  },
+  signInContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 2,
+  },
+  signInText: {
+    color: '#6B7280',
+    fontWeight: '600',
+  },
+  signInLink: {
+    fontWeight: '600',
+    color: '#FBBF24',
+  },
+});
