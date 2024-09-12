@@ -11,7 +11,7 @@ export default function WelcomeScreen() {
     return (
         <SafeAreaView style={[styles.container, { backgroundColor: themeColors.bg }]}>
             <View style={styles.innerContainer}>
-                <Text style={styles.title}>Bienvenido Kilber!</Text>
+                <Text style={styles.title}>Bienvenido!</Text>
                 <View style={styles.imageContainer}>
                     <Image
                         source={require("../assets/images/welcome.png")}
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         marginVertical: 16,
     },
     title: {
-        color: '#FFFFFF',
+        color: '#000000',
         fontWeight: 'bold',
         fontSize: 32,
         textAlign: 'center',
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     alreadyAccountText: {
-        color: '#FFFFFF',
+        color: '#6B7280',
         fontWeight: '600',
     },
     loginText: {

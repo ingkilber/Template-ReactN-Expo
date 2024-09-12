@@ -19,7 +19,7 @@ export default function SignUpScreen() {
         </View>
         <View style={styles.imageContainer}>
           <Image 
-            source={require('../assets/images/signup.png')} // Cambia la imagen según sea necesario
+            source={require('../assets/images/login.png')} // Cambia la imagen según sea necesario
             style={styles.signupImage}
           />
         </View>
