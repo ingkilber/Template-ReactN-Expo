@@ -31,4 +31,4 @@ Sigue estos pasos para configurar y ejecutar la plantilla en tu máquina local.
 
 **Contacto**
 
-Para cualquier pregunta o problema, puedes abrir un issue en GitHub o contactar a kilbermarcano@gmail.com.
+Para cualquier pregunta o problema, puedes abrir un issue en GitHub o contactarme kilbermarcano@gmail.com.
